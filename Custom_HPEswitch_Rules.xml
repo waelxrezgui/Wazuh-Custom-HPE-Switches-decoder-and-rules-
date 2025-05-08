@@ -1,0 +1,87 @@
+<group name="custom_Switch_Rules">
+
+  <!-- Rule for Link Down (Network Interface Down) -->
+  <rule id="100101" level="6">
+    <decoded_as>custom-trapmgr</decoded_as>
+    <match>Link Down</match>
+    <description>Network interface down (Link Down)</description>
+    <group>network,availability,down</group>
+  </rule>
+  <rule id="100111" level="6">
+    <decoded_as>TRAPMGR</decoded_as>
+    <match>Link Down</match>
+    <description>Network interface down (Link Down)</description>
+    <group>network,availability,down</group>
+  </rule>
+
+  <!-- Rule for Link Up -->
+  <rule id="100102" level="6">
+    <decoded_as>custom-trapmgr</decoded_as>
+    <match>Link Up</match>
+    <description>Network interface up (Link Up)</description>
+    <group>network,availability,up</group>
+  </rule>
+  <rule id="100112" level="6">
+    <decoded_as>TRAPMGR</decoded_as>
+    <match>Link Up</match>
+    <description>Network interface up (Link Up)</description>
+    <group>network,availability,up</group>
+  </rule>
+
+  <!-- Rule for Failed User Login -->
+  <rule id="100107" level="10">
+    <decoded_as>custom-usermgr</decoded_as>
+    <match>Failed</match>
+    <description>Failed user authentication (USER_MGR)</description>
+    <group>authentication,fail</group>
+  </rule>
+  <rule id="100117" level="10">
+    <decoded_as>USERMGR</decoded_as>
+    <match>Failed</match>
+    <description>Failed user authentication (USER_MGR - fallback)</description>
+    <group>authentication,fail</group>
+  </rule>
+
+  <!-- HTTP Session Start -->
+  <rule id="100105" level="4">
+    <decoded_as>custom-trapmgr</decoded_as>
+    <match>HTTP Session started</match>
+    <description>New HTTP session started on switch</description>
+    <group>authentication,info</group>
+  </rule>
+  <rule id="100115" level="4">
+    <decoded_as>TRAPMGR</decoded_as>
+    <match>HTTP Session started</match>
+    <description>New HTTP session started on switch (fallback)</description>
+    <group>authentication,info</group>
+  </rule>
+
+  <!-- SNMP Stats -->
+  <rule id="100106" level="2">
+    <decoded_as>custom-trapmgr</decoded_as>
+    <match>Inserts: .* Deletes: .* Ageouts :</match>
+    <description>SNMP trapmgr statistics message</description>
+    <group>trapmgr,statistics</group>
+  </rule>
+  <rule id="100116" level="2">
+    <decoded_as>TRAPMGR</decoded_as>
+    <match>Inserts: .* Deletes: .* Ageouts :</match>
+    <description>SNMP trapmgr statistics message (fallback)</description>
+    <group>trapmgr,statistics</group>
+  </rule>
+
+  <!-- Catch-all for TRAPMGR -->
+  <rule id="100100" level="3">
+    <decoded_as>custom-trapmgr</decoded_as>
+    <match>%%</match>
+    <description>Generic TRAPMGR message received</description>
+    <group>trapmgr</group>
+  </rule>
+  <rule id="100110" level="3">
+    <decoded_as>TRAPMGR</decoded_as>
+    <match>%%</match>
+    <description>Generic TRAPMGR message received (fallback)</description>
+    <group>trapmgr</group>
+  </rule>
+
+</group>
